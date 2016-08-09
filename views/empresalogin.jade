@@ -1,0 +1,112 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Inicio
+    meta(http-equiv='content-type', content='text/html; charset=utf-8')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    link(rel='shortcut icon', href='/images/lupa.ico')
+    script(src='/templates/js/jquery.min.js')
+    script(src='/templates/js/skel.min.js')
+    script(src='/templates/js/skel-layers.min.js')
+    script(src='/templates/js/init.js')
+    script(type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(type="text/javascript" src="/materialize/js/materialize.min.js")
+    link(rel='stylesheet', href='/templates/css/skel.css')
+    link(rel='stylesheet', href='/templates/css/style.css')
+    link(rel='stylesheet', href='/templates/css/style-xlarge.css')
+    script(src='/javascripts/activa.js')
+    //Google icon font
+    link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    //Import materialize.css
+    link(type="text/css" rel="stylesheet" href="/materialize/css/materialize.css" media="screen,projection")
+    //optimized for mobiles
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    //favicon
+    link(rel="icon" href="http://example.com/favicon.png")
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.parallax-1.1.3.js')
+    script(type='text/javascript', src='/javascripts/jquery.localscroll-1.2.7-min.js')
+    script(type='text/javascript', src='/javascripts/jquery.scrollTo-1.4.2-min.js')    
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css') 
+    //link(rel='stylesheet', href='/resources/demos/style.css')
+    script(src='/bootstrap/js/jquery.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css')
+    script(src='//code.jquery.com/jquery-1.10.2.js')
+    script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')
+    script(src='/javascripts/habilidad.js')
+    script(language="JavaScript" type="text/javascript"). 
+      $(function() {
+      $( "#sortable1, #sortable2" ).sortable({
+      connectWith: ".connectedSortable"
+      }).disableSelection();
+      });
+    style.
+      #sortable1, #sortable2 {
+      border: 1px solid #eee;
+      width: 142px;
+      min-height: 20px;
+      list-style-type: none;
+      margin: 0;
+      padding: 5px 0 0 0;
+      float: left;
+      margin-right: 10px;
+      }
+      #sortable1 li, #sortable2 li {
+      margin: 0 5px 5px 5px;
+      padding: 5px;
+      font-size: 1.2em;
+      width: 120px;
+      }
+
+
+  body
+    // Header
+    header#header
+      nav#nav
+        ul
+          li
+            form(method="post" action="/usuario/homee")
+              input.form-control(type="text" name="idUsuario" value="#{usuario.idUsuario}" style='display:none')
+              button(class="button" type="submit") Inicio
+          //li
+            a(href='/userlogin') UserLogin
+          //li
+            a(href='elements.html') Elementson
+          li
+            form(method="post" action="/usuario/consultarperfile")
+              input.form-control(type="text" name="idUsuario" value="#{usuario.idUsuario}" style='display:none')
+              button.button(type="submit") #{usuario.nombre}
+          li
+            a(href='/sesiones/cerrar') CERRAR SESION
+              i(class='fa fa-fw fa-power-off')
+    // Main
+    section#main.wrapper
+      .container
+        header.major
+          h2 Vacantes
+          p
+          form(method="post" action="/usuario/nuevavacante")
+            input.form-control(type="text" name="usuarioID" value="#{usuario.idUsuario}" style='display:none')
+            button.button(type="submit") Agregar
+        div.row
+          div.container
+           table
+                thead
+                  th ID
+                  th Nombre 
+                  th Descripcion
+                  th Sueldo
+                  th Estado
+                tbody
+                  each elemento in vacantes
+                    tr
+                      td #{elemento.idVacante}
+                      td #{elemento.nombrev}
+                      td #{elemento.descripcion}
+                      td #{elemento.sueldo}
+                      td #{elemento.Estado}
+        a.image.fit(href='#')
+          img(src='/templates/images/pic07.jpg', alt='')

@@ -1,0 +1,69 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Inicio
+    meta(http-equiv='content-type', content='text/html; charset=utf-8')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    script(src='/templates/js/html5shiv.js')
+    script(src='/templates/js/jquery.min.js')
+    script(src='/templates/js/skel.min.js')
+    script(src='/templates/js/skel-layers.min.js')
+    script(src='/templates/js/init.js')
+    link(rel='stylesheet', href='/templates/css/skel.css')
+    link(rel='stylesheet', href='/templates/css/style.css')
+    link(rel='stylesheet', href='/templates/css/style-xlarge.css')
+  body
+    // Header
+    header#header
+      nav#nav
+        ul
+          li
+            form(method="post" action="/usuario/home")
+              input.form-control(type="text" name="idUsuario" value="#{perfil.idUsuario}" style='display:none')
+              button(class="button" type="submit") Inicio
+          //li
+            a(href='/userlogin') UserLogin
+          //li
+            a(href='elements.html') Elementson
+          li
+            form(method="post" action="/usuario/consultarperfil")
+              input.form-control(type="text" name="idUsuario" value="#{perfil.idUsuario}" style='display:none')
+              button.button(type="submit") #{perfil.nombre}
+          li
+            a(href='/sesiones/cerrar') CERRAR SESION
+              i(class='fa fa-fw fa-power-off')
+    // Main
+    section#main.wrapper
+      .container
+        header.major
+          h2 Resultados
+        div.row
+          div.container
+            if vacantesexelentes && vacantesexelentes.length
+              table
+                thead
+                  th ID
+                  th Nombre 
+                  th Carrera
+                  th Sueldo
+                  th Estado
+                  th
+                tbody
+                  each elemento in vacantesexelentes
+                    tr
+                      form(method="post" action="/busqueda/consultarvacante")
+                        td #{elemento.idVacante}
+                        td #{elemento.nombre}
+                        td #{elemento.carrera}
+                        td #{elemento.sueldo}
+                        td #{elemento.estado}
+                        td
+                          input.form-control(type="text" name="idVacante" value="#{elemento.idVacante}" style='display:none')
+                          input.form-control(type="text" name="idUsuario" value="#{perfil.idUsuario}" style='display:none')
+                          button.button(type="submit") Aplicar
+            else
+              p.watermark No se han encontrado vacantes.
+        a.image.fit(href='#')
+          img(src='/templates/images/pic07.jpg', alt='')

@@ -1,0 +1,65 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Inicio
+    meta(http-equiv='content-type', content='text/html; charset=utf-8')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    script(src='/templates/js/html5shiv.js')
+    script(src='/templates/js/jquery.min.js')
+    script(src='/templates/js/skel.min.js')
+    script(src='/templates/js/skel-layers.min.js')
+    script(src='/templates/js/init.js')
+    link(rel='stylesheet', href='/templates/css/skel.css')
+    link(rel='stylesheet', href='/templates/css/style.css')
+    link(rel='stylesheet', href='/templates/css/style-xlarge.css')
+  body
+    // Header
+    header#header
+      nav#nav
+        ul
+          li
+            form(method="post" action="/usuario/home")
+              input.form-control(type="text" name="idUsuario" value="#{perfil.idUsuario}" style='display:none')
+              button(class="button" type="submit") Inicio
+          li
+            form(method="post" action="/usuario/consultarperfil")
+              input.form-control(type="text" name="idUsuario" value="#{perfil.idUsuario}" style='display:none')
+              button.button(type="submit") #{perfil.nombre}
+          li
+            a(href='/sesiones/cerrar') CERRAR SESION
+              i(class='fa fa-fw fa-power-off')
+    // Main
+    section#main.wrapper
+      .container
+        header.major
+          h2 Vacante
+        div.row
+          div.container
+            .table-wrapper
+              table
+                thead
+                  tr
+                    th Nombre
+                    th Descripcion
+                    th Sueldo
+                    th Estado
+                    th Carrera
+                    th Persona de Contacto
+                    th Telefono
+                    th Correo
+                tbody
+                  tr
+                    td #{vacante.nombre}
+                    td #{vacante.descripcion}
+                    td #{vacante.sueldo}
+                    td #{vacante.estado}
+                    td #{vacante.carrera}
+                    td #{vacante.persona}
+                    td #{vacante.telefono}
+                    td #{vacante.correo}
+                    td 
+                      button.button Aplicar
+        a.image.fit(href='#')
+          img(src='/templates/images/pic07.jpg', alt='')

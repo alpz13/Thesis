@@ -1,0 +1,67 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Inicio
+    meta(http-equiv='content-type', content='text/html; charset=utf-8')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    script(src='/templates/js/html5shiv.js')
+    script(src='/templates/js/jquery.min.js')
+    script(src='/templates/js/skel.min.js')
+    script(src='/templates/js/skel-layers.min.js')
+    script(src='/templates/js/init.js')
+    link(rel='stylesheet', href='/templates/css/skel.css')
+    link(rel='stylesheet', href='/templates/css/style.css')
+    link(rel='stylesheet', href='/templates/css/style-xlarge.css')
+  body
+    // Header
+    header#header
+      nav#nav
+        ul
+          li
+            form(method="post" action="/usuario/home")
+              input.form-control(type="text" name="idUsuario" value="#{usuario.idUsuario}" style='display:none')
+              button(class="button" type="submit") Inicio
+          //li
+            a(href='/userlogin') UserLogin
+          //li
+            a(href='elements.html') Elementson
+          li
+            form(method="post" action="/usuario/consultarperfil")
+              input.form-control(type="text" name="idUsuario" value="#{usuario.idUsuario}" style='display:none')
+              button.button(type="submit") #{usuario.nombre}
+          li
+            a(href='/sesiones/cerrar') CERRAR SESION
+              i(class='fa fa-fw fa-power-off')
+    // Main
+    section#main.wrapper
+      .container
+        header.major
+          h2 Búsqueda
+        div.row
+          div.container
+            form(method="post" action = "/usuario/busqueda")
+              h4(style="display:none") IdUsuario #{usuario.idUsuario}
+              input.form-control(type="text" name="idUsuario" style='display:none' value='#{usuario.idUsuario}')
+              h4 Estado
+              select.form-control(name="Estado")
+                option(value="-1" selected) -----------
+                each estado in estados
+                  option(value="#{estado.idEstado}") #{estado.Estado}
+              br
+              h4 Carrera
+              select.form-control(name="Carrera")
+                option(value="-1" selected) -----------
+                each carrera in carreras
+                  option(value="#{carrera.idCarrera}") #{carrera.nombreCarrera}
+              br
+              h4 Ingreso
+              select.form-control(name="Ingreso")
+                option(value="-1" selected) -----------
+                each sueldo in sueldos
+                  option(value="#{sueldo}") #{sueldo}
+              br
+              button.button(type="submit" style="position:relative;left: 50%;" ) Buscar
+        a.image.fit(href='#')
+          img(src='/templates/images/pic07.jpg', alt='')

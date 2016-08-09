@@ -1,0 +1,185 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title #{title}
+    meta(http-equiv='content-type', content='text/html; charset=utf-8')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    link(rel='shortcut icon', href='/images/lupa.ico')
+    script(src='/templates/js/jquery.min.js')
+    script(src='/templates/js/skel.min.js')
+    script(src='/templates/js/skel-layers.min.js')
+    script(src='/templates/js/init.js')
+    script(type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(type="text/javascript" src="/materialize/js/materialize.min.js")
+    link(rel='stylesheet', href='/templates/css/skel.css')
+    link(rel='stylesheet', href='/templates/css/style.css')
+    link(rel='stylesheet', href='/templates/css/style-xlarge.css')
+    script(src='/javascripts/activa.js')
+    //Import materialize.css
+    link(type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection")
+    //favicon
+    link(rel='shortcut icon', href='/images/icono.ico')
+    //Google icon font
+    link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    //Import materialize.css
+    link(type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection")
+    //optimized for mobiles
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    //favicon
+    link(rel="icon" href="http://example.com/favicon.png")
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.parallax-1.1.3.js')
+    script(type='text/javascript', src='/javascripts/jquery.localscroll-1.2.7-min.js')
+    script(type='text/javascript', src='/javascripts/jquery.scrollTo-1.4.2-min.js')
+    script(type='text/javascript').
+      $(document).ready(function(){
+      $('#banner').localScroll(800);
+      $('#two').parallax("50%", 0.1);
+      $('#one').parallax("50%", 0.1);
+      $('#three').parallax("50%", 0.3);
+      });
+  body.landing(id="intro")
+    // Banner
+    section#banner
+      div#bannner
+        ul#nav
+        li
+          a(href='#intro', title='Next Section' class="nav-bullet")
+        li
+          a(href='#two', title='Next Section' class="nav-bullet")
+        li
+          a(href='#one', title='Next Section' class="nav-bullet")
+        li
+          a(href='#three', title='Next Section' class="nav-bullet")
+      h2 Job Scope
+      ul.actions
+        li
+          a.button.big(href='#two') Iniciar Sesion
+        // Two
+    section#two.wrapper.style2.special
+      .container
+        header.major
+          h2 Inicio Sesion
+        .row
+            div.col.s6
+              .card.small
+                .card-image.waves-effect.waves-block.waves-light
+                  img.activator(src='/images/persona.png')
+                .card-content
+                  span.card-title.activator.grey-text.text-darken-4
+                    | Usuarios
+                    i.material-icons.right more_vert
+                .card-reveal
+                  span.card-title.grey-text.text-darken-4
+                    | Iniciar Sesion
+                    i.material-icons.right close
+                  .row
+                    form.col.s12(method="post" action = "/sesiones/iniciarsesionu")
+                      .row
+                        .input-field.col.s12
+                          input#icon_prefix.validate(type='text' name="inombreusuario")
+                          label Usuario
+                      .row
+                        .input-field.col.s12
+                          input#icon_telephone.validate(type='password' name="icontraseniausuario")
+                          label Contraseña
+                          .row
+                          .row
+                          input(type="submit")
+            div.col.s6
+              div(class= "card small")
+                .card-image.waves-effect.waves-block.waves-light
+                  img.activator(src='/images/company.jpg')
+                .card-content
+                  span.card-title.activator.grey-text.text-darken-4
+                    | Empresas
+                    i.material-icons.right more_vert
+                .card-reveal
+                  span.card-title.grey-text.text-darken-4
+                    | Iniciar Sesion
+                    i.material-icons.right close
+                  .row
+                    form.col.s12(method="post" action = "/sesiones/iniciarsesione")
+                      .row
+                        .input-field.col.s12
+                          input#icon_prefix.validate(type='text' name="inombreempresa")
+                          label Usuario
+                      .row
+                        .input-field.col.s12
+                          input#icon_telephone.validate(type='password' name="icontraseniaempresa")
+                          label Contraseña
+                          .row
+                          .row
+                          input(type="submit")
+    // One
+    section#one.wrapper.style1.special
+      div.container
+        div.row(class='150%')
+          div(class="6u 12u$(medium)")
+            section.box
+              i.icon.big.rounded.color1.fa-cloud
+              h3 Usuario
+              p
+          div.col.s6
+            section.box
+              i.icon.big.rounded.color6.fa-rocket
+              h3 Empresa
+              p
+    //Three
+    section#three.wrapper.style5.special
+      .container
+        header.major
+          h2 Registrar Usuario
+        .row
+          div.col.s6
+            div(class= "card small")
+              .card-image.waves-effect.waves-block.waves-light
+                img.activator(src='/images/persona2.jpg')
+              .card-content
+                span.card-title.activator.grey-text.text-darken-4
+                  | Usuario
+                  i.material-icons.right more_vert
+              .card-reveal
+                span.card-title.grey-text.text-darken-4
+                  | Registrar Usuario
+                  i.material-icons.right close
+                .row
+                  form.col.s12(method="post" action = "/usuario/crearUsuario")
+                    .row
+                      .input-field.col.s12
+                        input#icon_prefix.validate(type='text' name="cnombreUsuario")
+                        label Usuario
+                    .row
+                      .input-field.col.s12
+                        input#icon_telephone.validate(type='password' name="ccontraseniaUsuario")
+                        label Contraseña
+                        .row
+                        .row
+                        input(type="submit")
+          div.col.s6
+            div(class= "card small")
+              .card-image.waves-effect.waves-block.waves-light
+                img.activator(src='/images/company2.jpg')
+              .card-content
+                span.card-title.activator.grey-text.text-darken-4
+                  | Empresas
+                  i.material-icons.right more_vert
+              .card-reveal
+                span.card-title.grey-text.text-darken-4
+                  | Registrar Usuario
+                  i.material-icons.right close
+                .row
+                  form.col.s12(method="post" action = "/usuario/crearEmpresa")
+                    .row
+                      .input-field.col.s12
+                        input#icon_prefix.validate(type='text' name="cnombreEmpresa")
+                        label Usuario
+                    .row
+                      .input-field.col.s12
+                        input#icon_telephone.validate(type='password' name="contraseniaEmpresa")
+                        label Contraseña
+                        .row
+                        .row
+                        input(type="submit")
